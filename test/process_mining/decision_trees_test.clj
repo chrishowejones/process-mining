@@ -12,7 +12,17 @@
     (is (==
          (with-precision 4
            (* 1 (bigdec (entropy [70 80]))))
-         0.5436))))
+         0.5436)))
+  (testing "test entropy where positive is same as population"
+    (is (==
+         (with-precision 4
+           (* 1 (bigdec (entropy [80 80]))))
+         0)))
+  (testing "test entropy where positive is zero"
+    (is (==
+         (with-precision 4
+           (* 1 (bigdec (entropy [0 80]))))
+         0))))
 
 (deftest test-weighted-entropy
   (testing "test weighted entropy of population 0f 160 and entropies [30 80]

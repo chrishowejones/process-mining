@@ -3,9 +3,11 @@
 
 (defn- partial-entropy
   [ratio]
-  (* ratio (log2 ratio)))
+  (if (zero? ratio)
+    0
+    (* ratio (log2 ratio))))
 
-(defn entropy [[positive population]]
+ (defn entropy [[positive population]]
   (let [pos-ratio (/ positive population)
         neg-ratio (/ (- population positive) population)]
     (-
